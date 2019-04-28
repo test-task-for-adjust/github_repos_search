@@ -1,0 +1,24 @@
+<h1>Repositories</h1>
+
+<%= form_tag('/', method: 'get') do %>
+  <%= label_tag(:query, 'Search repositories:') %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag('Search') %>
+<% end %>
+
+<br>
+
+<% @search_results.each do |search_result| %>
+  <article>
+    <h2><a href=<%= search_result.svn_url %>><%= search_result.name %></a></h2>
+    <p>
+      Owner: <b><%= search_result.owner.login %></b>
+    </p>
+    <p>
+      Description: <%= search_result.description %>
+    </p>
+    <p>
+
+    </p>
+  </article>
+<% end %>
