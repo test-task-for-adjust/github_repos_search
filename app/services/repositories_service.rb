@@ -8,8 +8,8 @@ class RepositoriesService
 
     client.search_repositories(@search_query).items
   rescue StandardError => e
-    Rails.logger.error [e.message, *e.backtrace].join($/)
-    []
+    Rails.logger.error [e.message, *e.backtrace].join($/) # a call to NewRelic or similar would be used in a real app
+    raise e
   end
 
   private
